@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <meta name="viewport" content="width =device-width, initial scale">
+        <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     </head>
     <body>
 <section id="banner">
@@ -14,19 +15,21 @@
         <p>Al based acoustic wave monitoring of rail defects like cracks
         </p>
         <div class="banner-btn">
-            <a href="#"><span></span> Find out</a>
-            <a href="#"><span></span>Read more</a>
+            <a href="#service"><span></span> Find out</a>
+            <a href="#footer"><span></span>Read more</a>
         </div>
     </div>
 </section>
 <div id="sideNav">
     <nav>
         <ul>
-            <li><a href="#">HOME</a></li>
+            <li><a href="#banner">HOME</a></li>
             <li><a href="#">ZONAL RAILWAYS</a></li>
-            <li><a href="#">SERVICES</a></li>
+            <li><a href="#service">SERVICES</a></li>
             <li><a href="html2.html">WARNING MESSAGE</a></li>
-            <li><a href="#">METUS</a></li>
+            <li><a href="#footer">METUS</a></li>
+            <li><a href="html3.html">CRACK ASSESSMENT VEHICLE</a></li>
+            <li><a href="html4.html">LOGIN PAGE</a></li>
         </ul>
     </nav>
 </div>
@@ -82,16 +85,16 @@
         <h1>we provide better</h1>
     </div>
     <div class="service-box">
-        <div class="single-service">
-            <img src="Barber_Shop_img/maxresdefault.jpg"height="300">
+        <a href="html3.html"><div class="single-service">
+           <img src="Barber_Shop_img/maxresdefault.jpg"height="300">
             <div class="overlay"></div>
             <div class="service-desc">
             <h3>Vandhe bharat</h3>
             <hr>
             <p>India fastest train. indegeneiously build it has many features for the passengers. it is passenger friendly</p>
         </div>
-        </div>
-        <div class="single-service">
+        </div></a>
+        <a href="html4.html"><div class="single-service">
             <img src="Barber_Shop_img/train.jpg"height="300" >
             <div class="overlay"></div>
             <div class="service-desc">
@@ -99,9 +102,9 @@
                 <hr>
                 <p>It is also a fastest train . the travel time reduced and you speedly go were ever you want</p>
             </div>
-        </div>
+        </div></a>
         
-        <div class="single-service">
+        <a href="html3.html"><div class="single-service">
             <img src="Barber_Shop_img/OIP (2).jpeg"height="300" >
             <div class="overlay"></div>
             <div class="service-desc">
@@ -109,9 +112,9 @@
                 <hr>
                 <p>it carry many goods and useful for export the things from one country to another country</p>
             </div>
-        </div>
+        </div></a>
        
-        <div class="single-service">
+        <a href="html3.html"><div class="single-service">
             <img src="Barber_Shop_img/Goods train.jpg"height="300" >
             <div class="overlay"></div>
             <div class="service-desc">
@@ -119,7 +122,7 @@
                 <hr>
                 <p>Its useful for the export and inport of goods</p>
             </div>
-        </div>
+        </div></a>
         </div>
     </div>
 </div>
@@ -137,31 +140,31 @@
         <div class="user">
            <img src="Barber_Shop_img/img-1.jpg" height="50">
            <div class="user info">
-            <h4>Marry cynthiya <i class="fa fa-twitter"></i></h4>
-            <small>  </small>
+            <h4>Marry cynthiya <i></i></h4>
+          
            </div>
         </div>
-        <p>our first mentor</p>
+        <p>First mentor</p>
             </div>
     <div class="testimonial-col">
         <div class="user">
             <img src="Barber_Shop_img/img-2.jpg" height="50">
             <div class="user info">
              <h4>vijayanand sir </h4>
-             <small> Balaji.S </small>
+             <small> </small>
             </div>
         </div>
-        <p>our leader for hackalite</p>
+        <p>Second mentor</p>
     </div>
     <div class="testimonial-col">
         <div class="user">
             <img src="Barber_Shop_img/img-3.jpg" height="50">
             <div class="user info">
-             <h4>vikram</i></h4>
-             <small> raj </small>
+             <h4>Balaji.S</i></h4>
+             <small> </small>
             </div>
         </div>
-        <p>he says that this train is very useful and give us very good train</p>
+        <p>Team Leader</p>
 </div>
 </div>
 </section>
@@ -176,11 +179,9 @@
 </div>
 <div class="footer-row">
 <div class="footer-left">
-    <h1>opening hours</h1>
-    <p>🕒  Monday  to Friday - 9am to 9pm 
-    </p>
-    <p> 🕒
-     saturday  to sunday - 8am to 12pm </p>
+    <h1></h1>
+    <p></p>
+    <p> </p>
     </div>
 </div>
 <div class="social-links">
@@ -191,9 +192,6 @@
     <p>copyright of youtube </p>
 </div>
 </section>
-
-
-
 <script>
     var menuBtn = document.getElementById("menuBtn")
     var sideNav = document.getElementById("sideNav")
@@ -209,7 +207,11 @@
         menu.src = "Barber_shop_img/menu.png";
     }
 }
-
+// All animations will take exactly 500ms
+var scroll = new SmoothScroll('a[href*="#"]', {
+	speed: 1000,
+	speedAsDuration: true
+});
 </script>
     </body>
 </html>
