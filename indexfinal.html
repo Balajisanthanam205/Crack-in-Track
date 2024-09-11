@@ -5,116 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor Data Dashboard</title>
     <style>
-        /* Apply a background GIF with a red theme */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('background.gif') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff; /* White text color for better contrast */
+            background-color: #f4f4f4;
+            color: #333;
         }
-
-        /* Container styling */
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for readability */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        /* Header styling */
         h1 {
             text-align: center;
-            color: #ff6f6f; /* Red color for header */
-            margin-bottom: 20px;
         }
-
-        /* Alert box styling */
-        .alert {
-            padding: 10px;
-            background-color: #ffdddd; /* Light red background for alert */
-            color: #d8000c; /* Red color for alert text */
-            border: 1px solid #d8000c;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: none; /* Hidden by default */
-        }
-
-        /* Table styling */
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-
         .data-table th, .data-table td {
             border: 1px solid #ddd;
-            padding: 12px;
+            padding: 8px;
             text-align: center;
         }
-
         .data-table th {
-            background-color: #ff4d4d; /* Darker red for table headers */
-            color: #fff; /* White text color for headers */
+            background-color: #f2f2f2;
         }
-
-        .data-table td {
-            background-color: #ff6666; /* Light red for table data cells */
-            color: #fff; /* White text color for data cells */
-        }
-
-        .data-table tr:nth-child(even) td {
-            background-color: #ff4d4d; /* Alternating row color */
-        }
-
-        /* Popup modal styling */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-        }
-
-        .modal-header {
-            font-size: 18px;
-            font-weight: bold;
-            color: #d8000c; /* Red color for modal header */
-        }
-
-        .modal-body {
-            margin: 10px 0;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
+        .alert {
+            padding: 10px;
+            background-color: #ffdddd;
+            color: #d8000c;
+            margin-bottom: 20px;
+            border: 1px solid #d8000c;
+            border-radius: 5px;
+            display: none;
         }
     </style>
 </head>
@@ -137,17 +65,6 @@
         </table>
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <div class="modal-header">Attention!</div>
-            <div class="modal-body">
-                <p>There is a crack detected in the sensor readings. Please check immediately!</p>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Firebase Realtime Database URL
         const firebaseUrl = 'https://tranquil-c2029-default-rtdb.firebaseio.com/sensorData.json';
@@ -167,8 +84,6 @@
         function updateTable(data) {
             const dataBody = document.getElementById('data-body');
             const alertDiv = document.getElementById('alert');
-            const modal = document.getElementById('myModal');
-            const closeBtn = document.getElementById('closeBtn');
 
             dataBody.innerHTML = '';
 
@@ -184,31 +99,17 @@
                     </tr>
                 `;
 
-                // Show alert if crack detected
+                // Show alert and popup if crack detected
                 if (data.crack_detected) {
                     alertDiv.textContent = 'Crack Detected!';
                     alertDiv.style.display = 'block';
-                    
-                    // Show modal popup if crack detected
-                    modal.style.display = 'block';
+                    alert('Attention: There is a crack detected!');
                 } else {
                     alertDiv.style.display = 'none';
-                    modal.style.display = 'none';
+                    alert('No crack detected.');
                 }
             } else {
                 dataBody.innerHTML = '<tr><td colspan="4">No data available</td></tr>';
-            }
-        }
-
-        // Close the modal when the user clicks on <span> (x)
-        document.getElementById('closeBtn').onclick = function() {
-            document.getElementById('myModal').style.display = 'none';
-        }
-
-        // Close the modal when the user clicks anywhere outside of the modal
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                document.getElementById('myModal').style.display = 'none';
             }
         }
 
