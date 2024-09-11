@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor Data Dashboard</title>
-    <link rel="stylesheet" href="stylesfinal.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="stylesweb.css"> <!-- Link to your CSS file -->
 </head>
 <body>
     <div class="container">
@@ -23,6 +23,17 @@
                 <!-- Data will be inserted here -->
             </tbody>
         </table>
+        <button id="show-graph" class="button">Show Graph</button>
+        <div id="chart-container" class="chart-container" style="display: none;">
+            <iframe
+                id="chart-iframe"
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTa_biWMU3CjC23p-NVlvvDdDm074ngnsPUSVzdRXPlx6TOI8FRgIRVuBhvJumZcKYNVm38dItWjCUN/pubchart?oid=298430043&amp;format=interactive"
+                width="800"
+                height="600"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        </div>
     </div>
 
     <script>
@@ -72,6 +83,15 @@
                 dataBody.innerHTML = '<tr><td colspan="4">No data available</td></tr>';
             }
         }
+
+        // Function to show the graph
+        function showGraph() {
+            const chartContainer = document.getElementById('chart-container');
+            chartContainer.style.display = 'block';
+        }
+
+        // Event listener for the button click
+        document.getElementById('show-graph').addEventListener('click', showGraph);
 
         // Fetch data on page load
         fetchData();
